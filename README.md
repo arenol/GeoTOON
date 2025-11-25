@@ -3,7 +3,7 @@ This is a proposal of a new data format for the exchange of geospatial data.
 As of of now, it is only at an early stage.
 
 # GTN - GeoTOON data format.
-Over the last years, we have seen several file formats for exchanging geographical data based on existing data formats. **GML** (and **GPX**) is an implementation of **XML**, and **GeoJSON** is an implementation of **JSON**. However, a problem with these formats is that they are rather verbose; they contain a lot of unnecessary markup or repetition which makes the files unnecessary large, and not so readable for humans. Moreover, this is not optimal for transmission over Internet and local networks; geospatial data often implies large volumes of data.
+Over the last years, we have seen several file formats for exchanging geospatial data based on existing data formats. **GML** (and **GPX**) is an implementation of **XML**, and **GeoJSON** is an implementation of **JSON**. However, a problem with these formats is that they are rather verbose; they contain a lot of unnecessary markup or repetition which makes the files unnecessary large, and not so readable for humans. Moreover, this is not optimal for transmission over Internet and local networks; geospatial data often implies large volumes of data.
 
 There is now a new alternative available: [TOON](https://toonformat.dev/), or Token-Oriented Object Notation, is a compact and human readable file format build for LLM-driven networks. 
 Token-Oriented Object Notation is a compact, human-readable encoding of the JSON data model that minimizes tokens and makes structure easy for models to follow. It's intended for LLM input as a drop-in, lossless representation of your existing JSON.

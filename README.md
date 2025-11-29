@@ -1,6 +1,6 @@
 ## Preamble
 This is a proposal of a new data format for the exchange of geospatial data.
-As of of now, it is only at an early stage.
+As of of now, it is only at an early draft stage.
 
 # GTN - GeoTOON data format.
 Over the last years, we have seen several file formats for exchanging geospatial data based on existing data formats. **GML** (and **GPX**) is an implementation of **XML**, and **GeoJSON** is an implementation of **JSON**. However, a problem with these formats is that they are rather verbose; they contain a lot of unnecessary markup or repetition which makes the files unnecessary large, and not so readable for humans. Moreover, this is not optimal for transmission over Internet and local networks; geospatial data often implies large volumes of data.
@@ -46,6 +46,9 @@ A data set element must have the following child elements:
 * **srs**: An-EPSG code identifying the spatial reference system. If the srs is unknown, an empty string is provided.
 * **fields**: Field definitions in tabular format. This  is for inserting into databases or converting to different formats, such as .shp or .gpkg
 * **data**: A tabular array of the data. The geometry field must always be the last field.
+
+## NULL attributes.
+Null attribute values are represented by the string ```NULL```. If a string has the value "NULL", it must be quoted.
 
 ## Geometry
 Point geometry is always encoded as an array of elements accroding to the dimensions. This is shown in the example above

@@ -11,8 +11,6 @@ Token-Oriented Object Notation is a compact, human-readable encoding of the JSON
 This format also lends itself well to geospatial data.
 Hence, this document, aims to propose an implementation of TOON for geospatial data. 
 
-
-
 ## Example
 In GeoTOON, a data file containing geospatial data, such as cities could look like this:
 
@@ -24,7 +22,7 @@ In GeoTOON, a data file containing geospatial data, such as cities could look li
         name,string,20,0
         country,string,20,0
         population,int,10,0
-      data[4]{name,country,population,geometry}:
+      data[4]{name,country,population,coords}:
         Tokyo,Japan,37732000,[139.6922,35.6897]
         Mexico City,Mexico,21804000,[-99.1333,19.4333]
         Mumbai,India,23973000,[72.8775,19.0761]
@@ -47,13 +45,10 @@ A data set element must have the following child elements:
 * **fields**: Field definitions in tabular format. This  is for inserting into databases or converting to different formats, such as .shp or .gpkg
 * **data**: A tabular array of the data. The geometry field must always be the last field.
 
-## NULL attributes.
-Null attribute values are represented by the string ```NULL```. If a string has the value "NULL", it must be quoted.
+## Coordinate data
+Point coordinates is always encoded as an array of elements accroding to the dimensions. This is shown in the example above
 
-## Geometry
-Point geometry is always encoded as an array of elements accroding to the dimensions. This is shown in the example above
-
-A natural way to represent *line* geometry would be to encode them as arrays of arrays, like this
+A natural way to represent *line* or *area* geometry would be to encode them as arrays of arrays, like this:
 
     [[100,0],[200,0],[200,50],[100,50],[100,0]]
     
@@ -61,18 +56,13 @@ However, GTN-data shall use the more compact form that the TOON-format alows:
 
     [100,0;200,0;200,50;100,50;100,0]
     
-*Area* geometry always consist of arrays of parts. This is a simple area with one part:
-
-    [[100,0;200,0;200,50;100,50;100,0]]
-    
-An area with a hole is thus represented like this:
+Multipart features, such as areas with holes, are represented as arrays of arrays:
+This is an area with a hole:
 
     [[100,0;200,0;200,50;100,50;100,0],[120,10;180,10:180,40;120;40;120,10]]
 
 
-## Author
-Agnar Renolen
-agnar.renolen@gmail.com
+
 
 
 
